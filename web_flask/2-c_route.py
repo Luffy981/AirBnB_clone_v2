@@ -21,7 +21,7 @@ def hi_HBNB():
 @app.route('/c/<text>', strict_slashes=False)
 def redirect_parameter(text):
     """Accept parameter"""
-    return "C {}".format(text)
+    return "C {}".format(text.replace("_", " "))
 
 
 if __name__ == "__main__":
