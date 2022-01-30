@@ -33,7 +33,7 @@ class BaseModel:
                 self.created_at = datetime.now()
             if "updated_at" not in kwargs:
                 self.updated_at = datetime.now()
-            if not self.id:
+            if "id" not in kwargs:
                 self.id = str(uuid.uuid4())
 
     def delete(self):
