@@ -69,4 +69,5 @@ class FileStorage:
             pass
 
     def close(self):
+        """method to reload"""
         self.reload()
