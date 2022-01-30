@@ -24,7 +24,8 @@ def redirect_parameter(text):
     return "C {}".format(text.replace("_", " "))
 
 
-@app.route('/python/<text>', strict_slashes=False, default={'text': "is cool"})
+@app.route('/python/', strict_slashes=False, defaults={'text': "is cool"})
+@app.route('/python/<text>', strict_slashes=False)
 def python_route(text):
     """Python is cool"""
     return "Python {}".format(text.replace("_", " "))
