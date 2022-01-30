@@ -21,6 +21,6 @@ else:
         name = ''
 
         @property
-        def list_city(self):
+        def cities(self):
             cities = models.storage.all(City)
             return cities
