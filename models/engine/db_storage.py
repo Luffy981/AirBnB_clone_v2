@@ -33,21 +33,18 @@ class DBStorage:
             Base.metadata.drop_all(bind=self.__engine, checkfirst=True)
 
     def all(self, cls=None):
-        if cls is None:
-            data = self.__session.query(User).all()
-            data += self.__session.query(State).all()
-            data += self.__session.query(City).all()
-            data += self.__session.query(Amenity).all()
-            data += self.__session.query(Place).all()
-            data += self.__session.query(Review).all()
+        """ Queries a database for objects """
+        if not cls:
+            res_list = self.__session.query(Amenity)
+            res_list.extend(self.__session.query(City))
+            res_list.extend(self.__session.query(Place))
+            res_list.extend(self.__session.query(Review))
+            res_list.extend(self.__session.query(State))
+            res_list.extend(self.__session.query(User))
         else:
-            data = self.__session.query(eval(cls)).all()
-        dictionary = {}
-        for element in data:
-            key = '{}.{}'.format(type(element).__name__, element.id)
-            value = element
-            dictionary[key] = value
-        return dictionary
+            res_list = res_list = self.__session.query(cls)
+        return {'{}.{}'.format(type(obj).__name__, obj.id): obj
+                for obj in res_list}
 
     def new(self, obj):
         """add the object to the current database session"""
