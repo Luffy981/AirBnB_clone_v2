@@ -19,4 +19,8 @@ else:
     class State(BaseModel):
         """ State class """
         name = ''
-        cities = models.storage.all(City)
+
+        @property
+        def list_city(self):
+            cities = models.storage.all(City)
+            return cities
