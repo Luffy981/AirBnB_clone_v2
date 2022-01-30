@@ -22,5 +22,9 @@ else:
 
         @property
         def cities(self):
+            cities_list = []
             cities = models.storage.all(City)
-            return cities
+            for city in cities:
+                if city.state_id == self.id:
+                    cities_list.append(city)
+            return cities_list
