@@ -19,11 +19,8 @@ def teardown(self):
 @app.route('/states_list')
 def states():
     """Display all states"""
-    states = storage.all(State)
-    context = {
-        'states': states
-    }
-    return render_template('7-states_list.html', **context)
+    states = storage.all(State).values()
+    return render_template('7-states_list.html', states=states)
 
 
 if __name__ == "__main__":
