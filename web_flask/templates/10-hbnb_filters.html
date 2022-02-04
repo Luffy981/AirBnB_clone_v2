@@ -29,16 +29,15 @@
             {% endfor %}
           </ul>
         </div>
-        <div class="amenities">
-          <h3>Amenities</h3>
+       <div class="amenities">
+          <h3 class="amenities_name">Amenities</h3>
           <h4>&nbsp;</h4>
           <ul class="popover">
-            {% for amenity in amenities | sort(attribue='name') %}
+            {% for amenity in amenities | sort(attribute='name') %}
             <li>{{ amenity.name }}</li>
             {% endfor %}
           </ul>
         </div>
-
       </section>
     </div>
     <footer>
